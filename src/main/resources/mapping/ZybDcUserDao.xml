@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gtzn.digitcard.dao.ZybDcUserDao">
+
+    <resultMap type="com.gtzn.digitcard.model.ZybDcUser" id="ZybDcUserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="mobilePhone" column="mobile_phone" jdbcType="VARCHAR"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="companyId" column="company_id" jdbcType="INTEGER"/>
+        <result property="companyName" column="company_name" jdbcType="VARCHAR"/>
+        <result property="department" column="department" jdbcType="VARCHAR"/>
+        <result property="jobNumber" column="job_number" jdbcType="VARCHAR"/>
+        <result property="jobStatus" column="job_status" jdbcType="INTEGER"/>
+        <result property="payPassword" column="pay_password" jdbcType="VARCHAR"/>
+        <result property="accountBalance" column="account_balance" jdbcType="NUMERIC"/>
+        <result property="registerTime" column="register_time" jdbcType="TIMESTAMP"/>
+        <result property="enableStatus" column="enable_status" jdbcType="INTEGER"/>
+        <result property="accessLevel" column="access_level" jdbcType="INTEGER"/>
+        <result property="isPayPassword" column="is_pay_password" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <select id="queryUserByMobilePhone" resultMap="ZybDcUserMap">
+        select
+        id,
+        mobile_phone,
+        user_name,
+        company_id,
+        company_name,
+        department,
+        job_number,
+        job_status,
+        account_balance,
+        register_time,
+        enable_status,
+        access_level,
+        is_pay_password
+        from zyb_dc_user
+        where mobile_phone = #{mobilePhone}
+    </select>
+
+
+</mapper>
